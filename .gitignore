@@ -1,0 +1,14 @@
+node_modules/
+.next/
+out/
+.DS_Store
+*.log
+.env*
+
+.vercel
+
+# build cache
+tsconfig.tsbuildinfo
+
+# local Claude settings
+.claude/settings.local.json

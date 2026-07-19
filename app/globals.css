@@ -1,0 +1,162 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  PROPRIETARY FONTS — replace these two files:
+  /public/fonts/MaisonNeue-Book.woff2      (SpoiledChild body font)
+  /public/fonts/MediaSansCondensed-Bold.woff2 (SpoiledChild display font)
+  Until then, the stacks in tailwind.config.ts fall back gracefully.
+*/
+@font-face {
+  font-family: "MaisonNeue";
+  src: url("/fonts/MaisonNeue-Book.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "MediaSansCondensed";
+  src: url("/fonts/MediaSansCondensed-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --shell: 1440px;
+  --header-h: 88px;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: auto; /* Lenis handles smooth scroll */
+}
+
+body {
+  background: #ffffff;
+  color: #0a0a0a;
+  font-family: var(--font-book, "MaisonNeue"), "Helvetica Neue", Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+@layer components {
+  .shell {
+    @apply mx-auto w-full max-w-shell px-5 md:px-10;
+  }
+
+  /* SpoiledChild "brain" pill button */
+  .btn-brain {
+    @apply inline-flex items-center justify-center rounded-full bg-ink px-8 py-4 text-[13px] font-semibold uppercase tracking-[0.14em] text-white transition-all duration-300 ease-sc;
+  }
+  .btn-brain:hover {
+    @apply bg-brainpink;
+    transform: translateY(-2px);
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center rounded-full border border-ink bg-transparent px-8 py-4 text-[13px] font-semibold uppercase tracking-[0.14em] text-ink transition-all duration-300 ease-sc;
+  }
+  .btn-outline:hover {
+    @apply bg-ink text-white;
+  }
+
+  .display-title {
+    @apply font-display uppercase leading-[0.92] tracking-[-0.01em];
+  }
+
+  /* Circle-fill button hover: a disc (--fill colour) expands from the
+     cursor's entry point (--x/--y, set by ButtonFx) until it floods
+     the button. Pseudo sits at z -1 inside an isolated context, so it
+     paints above the button's own background but under its content. */
+  .btn-fill {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .btn-fill::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: var(--fill, theme(colors.knavy));
+    clip-path: circle(0% at var(--x, 50%) var(--y, 50%));
+    transition: clip-path 0.55s cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+  .btn-fill:hover::before,
+  .btn-fill:focus-visible::before {
+    clip-path: circle(150% at var(--x, 50%) var(--y, 50%));
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .btn-fill::before {
+      transition: none;
+    }
+  }
+
+  .btn-fill-navy {
+    --fill: theme(colors.knavy);
+  }
+  .btn-fill-orange {
+    --fill: theme(colors.korange);
+  }
+  .btn-fill-white {
+    --fill: #ffffff;
+  }
+}
+
+/* SplitReveal — word wrappers clip; characters slide up into view.
+   Tiny bottom padding (offset by margin) keeps descenders/commas from
+   being clipped by the word mask on tight line-heights. */
+.sr-w {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+.sr-c {
+  display: inline-block;
+  will-change: transform;
+}
+
+/* Google website translate — hide the injected top banner, tooltips and
+   text highlights; keep the page pinned to the top when translated. */
+body > .skiptranslate,
+iframe.goog-te-banner-frame,
+#goog-gt-tt,
+.goog-te-balloon-frame {
+  display: none !important;
+}
+body {
+  top: 0 !important;
+}
+.goog-text-highlight {
+  background: none !important;
+  box-shadow: none !important;
+}
+
+/* Hide scrollbar on horizontal carousels */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
