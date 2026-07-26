@@ -24,15 +24,19 @@ type GalleryTile = {
   height: string;
 };
 
-// NOTE: all tiles currently crop the single facility photo — swap each
-// `image` for dedicated location photography when it is available.
+// Real facility photography (/public/factory). Heights alternate tall →
+// short → mid so each masonry column reads with a different rhythm.
 const TILES: GalleryTile[] = [
-  { title: "Production Floor", image: "/about-facility.jpg", imagePosition: "object-center", height: "h-[420px]" },
-  { title: "Extrusion Line", image: "/about-facility.jpg", imagePosition: "object-left", height: "h-[300px]" },
-  { title: "Machinery", image: "/about-facility.jpg", imagePosition: "object-right", height: "h-[340px]" },
-  { title: "Testing Lab", image: "/about-facility.jpg", imagePosition: "object-left-bottom", height: "h-[380px]" },
-  { title: "Warehouse", image: "/about-facility.jpg", imagePosition: "object-right-top", height: "h-[300px]" },
-  { title: "Packaging", image: "/about-facility.jpg", imagePosition: "object-left-top", height: "h-[360px]" },
+  { title: "Pipe Extrusion Line", image: "/factory/extrusion-line.jpg", imagePosition: "object-center", height: "h-[420px]" },
+  { title: "Injection Moulding", image: "/factory/injection-moulding.jpg", imagePosition: "object-center", height: "h-[300px]" },
+  { title: "Moulding Hall", image: "/factory/moulding-hall.jpg", imagePosition: "object-center", height: "h-[340px]" },
+  { title: "Raw Material Mixing", image: "/factory/mixing-plant.jpg", imagePosition: "object-center", height: "h-[380px]" },
+  { title: "Mould Library", image: "/factory/mould-store.jpg", imagePosition: "object-center", height: "h-[300px]" },
+  { title: "Finished Goods Store", image: "/factory/warehouse.jpg", imagePosition: "object-center", height: "h-[360px]" },
+  { title: "Packing & Dispatch", image: "/factory/packaging.jpg", imagePosition: "object-center", height: "h-[320px]" },
+  // The straight-on signage shot is the closing card in AboutShowcase on
+  // this same page — only the angled one appears here, to avoid a repeat.
+  { title: "Corporate Office", image: "/factory/reception-signage-angle.jpg", imagePosition: "object-center", height: "h-[400px]" },
 ];
 
 export default function AboutGallery() {

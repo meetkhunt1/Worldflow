@@ -24,8 +24,8 @@ type ProductCard = {
 };
 
 const PRODUCTS: ProductCard[] = [
-  { name: "UPVC Pipes", use: "Plumbing & water supply", image: "/9%201.png" },
-  { name: "CPVC Pipes", use: "Hot & cold water systems", image: "/11%201.png" },
+  { name: "UPVC Pipes", use: "Plumbing & water supply", image: "/11%201.png" },
+  { name: "CPVC Pipes", use: "Hot & cold water systems", image: "/9%201.png" },
   { name: "SWR Pipes", use: "Soil, waste & rainwater", image: "/4%202.png" },
   { name: "HDPE Pipes", use: "High-pressure transport", image: "/7%201.png" },
   { name: "Column Pipes", use: "Borewell & submersible", image: "/2%201.png" },

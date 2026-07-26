@@ -12,7 +12,7 @@ const FADE_DURATION = 1; // crossfade length between slides
 
 const slides = [
   {
-    video: "/hero.mp4",
+    video: "/hero-slide-1.mp4",
     heading: ["Engineering flow.", "Building trust."],
     sub: "Premium UPVC, CPVC, SWR, HDPE, Column & Casing pipe systems manufactured for agriculture, residential, commercial, and industrial infrastructure.",
   },

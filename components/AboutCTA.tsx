@@ -72,7 +72,7 @@ export default function AboutCTA() {
       {/* Parallax background — oversized so the drift never shows edges */}
       <div data-cta-bg className="absolute -inset-y-[12%] inset-x-0" aria-hidden>
         <img
-          src="/about-facility.jpg"
+          src="/factory/warehouse.jpg"
           alt=""
           loading="lazy"
           className="h-full w-full object-cover"

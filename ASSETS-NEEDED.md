@@ -16,7 +16,7 @@ client. General rules for all assets:
 |---|---------|-----------------|--------------------|-------|
 | 1 | **Hero slider — slide 1** | Stock canal video (`hero.mp4`) | Video 1: factory / production line or pipes-in-use footage | MP4, 1920×1080+, 8–15 s loop |
 | 2 | **Hero slider — slide 2** | Stock video (repeat theme) | Video 2: different angle — warehouse, dispatch, or installation site | MP4, 1920×1080+, 8–15 s loop |
-| 3 | **Engineering Excellence** (split section) | `about-facility.jpg` (repeated on 3 sections site-wide) | Factory exterior **drone shot** or wide facility photo | Landscape, 1600px+ wide |
+| 3 | **Engineering Excellence** (split section) | ✅ Real photo — `/factory/injection-moulding.jpg` | Optional upgrade: factory exterior **drone shot** for a wider establishing view | Landscape, 1600px+ wide |
 | 4 | **Product journey strip** (scrolling pipe line-up) | 14 pipe cutout images (`/line/01–14.png`) | Real cutout photos of each pipe variant: 4× Column, 3× UPVC, 3× CPVC, 4× SWR — standing vertical | PNG, transparent bg, 1000px+ tall |
 | 5 | **Applications** (6 cards: plumbing, agriculture, etc.) | 6 AI-generated photos (`/apps/01–06.png`) | 6 real application photos — residential plumbing, agriculture/irrigation, borewell, drainage, commercial site, industrial | Portrait or square, 1200px+ |
 | 6 | **Full-width banner (Smart section)** | Leftover stock image (`spoiled are smary.jpeg`) | One wide lifestyle/site photo (pipes installed, water flowing, farm irrigation) | Landscape, 1920px+ wide |
@@ -26,8 +26,9 @@ client. General rules for all assets:
 
 | # | Section | Currently using | Needed from client | Specs |
 |---|---------|-----------------|--------------------|-------|
-| 1 | **Showcase** (photo + video cards) | `about-facility.jpg` again + hero video repeated | 1 facility interior photo **+** 1 short factory video (different from home hero videos) | Photo 1600px+, video MP4 8–15 s |
-| 2 | **Why Trust WorldFlow** (dark section, 1 image) | `about-facility.jpg` (third repeat) | Quality-control / testing-lab photo (pressure testing, inspection in action) | Landscape, 1600px+ |
+| 1 | **Showcase** (horizontal scroll cards) | ✅ Real photos — `/factory/moulding-hall.jpg` + `/factory/reception-signage.jpg` (closing brand card). Video card removed — no longer repeats the hero | Nothing | — |
+| 2 | **Why Trust WorldFlow** (dark section, 1 image) | ✅ Real photo — `/factory/extrusion-line.jpg` | Still wanted: quality-control / testing-lab photo (pressure testing, inspection in action) — badge reads "Every batch pressure-tested" | Landscape, 1600px+ |
+| 2b | **Factory Gallery** (masonry, 9 tiles) | ✅ 9 real facility photos in `/public/factory/` | Nothing — a testing-lab shot would let us add a 10th "Testing Lab" tile | Landscape, 1600px+ |
 | 3 | **4 Stage Process** | Text-only | Optional: 1 photo per stage (raw material, extrusion, testing, packaging) if we want to upgrade cards later | 1200px+ each |
 | 4 | **Global Presence** (dot map + counters) | Dot map graphic (fine) | Confirm export/presence numbers and product-range pill names | — |
 
@@ -83,7 +84,7 @@ client. General rules for all assets:
 
 1. **Hero videos ×2** — first thing every visitor sees.
 2. **Applications photos ×6** — currently AI-generated and also reused on the blog.
-3. **Factory/drone shot ×1 + QC/testing photo ×1** — kills the triple-repeat of `about-facility.jpg`.
+3. **QC/testing photo ×1** — the only factory subject still missing (9 real facility photos are now in `/public/factory/`, so `about-facility.jpg` is no longer repeated anywhere). A drone/exterior shot remains a nice-to-have.
 4. **Brochure PDFs ×4** — the download button currently serves a placeholder.
 5. **Full-width banner photo ×1** — still a leftover stock image.
 6. **Pipe cutouts ×14, blog covers ×4, OG image ×1** — polish tier.

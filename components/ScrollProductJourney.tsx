@@ -38,12 +38,12 @@ const LINEUP: LineupItem[] = [
   { src: "/line/02.png", name: "Column Pipe", ratio: 0.251, mult: 0.48, sm: false },
   { src: "/line/03.png", name: "Column Pipe", ratio: 0.247, mult: 0.75 },
   { src: "/line/04.png", name: "Column Pipe", ratio: 0.253, mult: 0.62, sm: false },
-  { src: "/line/05.png", name: "UPVC Plumbing Pipe", ratio: 0.324, mult: 0.62 },
-  { src: "/line/06.png", name: "UPVC Plumbing Pipe", ratio: 0.273, mult: 1.0, slot: true }, // tall white pipe
-  { src: "/line/07.png", name: "UPVC Plumbing Pipe", ratio: 0.467, mult: 0.49, sm: false },
   { src: "/line/08.png", name: "CPVC Plumbing Pipe", ratio: 0.226, mult: 0.68 },
-  { src: "/line/09.png", name: "CPVC Plumbing Pipe", ratio: 0.273, mult: 0.95 }, // tall tan pipe
+  { src: "/line/09.png", name: "CPVC Plumbing Pipe", ratio: 0.273, mult: 0.95, slot: true }, // tall tan pipe — traveller
   { src: "/line/10.png", name: "CPVC Plumbing Pipe", ratio: 0.254, mult: 0.53, sm: false },
+  { src: "/line/05.png", name: "UPVC Plumbing Pipe", ratio: 0.324, mult: 0.62 },
+  { src: "/line/06.png", name: "UPVC Plumbing Pipe", ratio: 0.273, mult: 1.0 }, // tall white pipe
+  { src: "/line/07.png", name: "UPVC Plumbing Pipe", ratio: 0.467, mult: 0.49, sm: false },
   { src: "/line/11.png", name: "SWR Drainage Pipe", ratio: 0.33, mult: 0.73, sm: false },
   { src: "/line/12.png", name: "SWR Drainage Pipe", ratio: 0.267, mult: 0.75 },
   { src: "/line/13.png", name: "SWR Drainage Pipe", ratio: 0.256, mult: 0.61, sm: false },

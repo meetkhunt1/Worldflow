@@ -4,6 +4,7 @@ import { useEffect, useState, type FormEvent } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import Reveal from "@/components/Reveal";
+import ProductCertifications from "@/components/ProductCertifications";
 import type { ProductPage } from "@/lib/products";
 
 /* ------------------------------------------------------------------ *
@@ -449,6 +450,9 @@ export default function ProductDetail({ product }: { product: ProductPage }) {
           </div>
         </div>
       </section>
+
+      {/* Certifications rail */}
+      <ProductCertifications />
 
       {/* FAQ */}
       <section className="bg-paper py-16 md:py-24">

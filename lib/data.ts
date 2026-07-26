@@ -124,10 +124,10 @@ export const footerContact = {
   phones: ["+91 97276 75942", "+91 92652 03885"],
   email: "worldflow8848@gmail.com",
   address: "Khodal Ind. Area, 8–B NH Veraval (Shapar), Rajkot Gujarat – 360024, India",
-  facebook: "https://www.facebook.com",
-  instagram: "https://www.instagram.com",
-  linkedin: "https://www.linkedin.com",
-  youtube: "https://www.youtube.com",
+  facebook: "https://www.facebook.com/hariompolyplast",
+  instagram: "https://www.instagram.com/worldflow_pipes_and_fittings/?igsh=aHd4anU3a3lmaThq",
+  linkedin: "https://www.linkedin.com/in/worldflow-pipe-and-fittings-0b4a2522b",
+  youtube: "https://www.youtube.com/@hariompolyplast8981",
 };
 
 export const footerBottom = {

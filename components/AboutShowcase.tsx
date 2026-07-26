@@ -10,10 +10,26 @@ gsap.registerPlugin(ScrollTrigger, useGSAP);
 /* ------------------------------------------------------------------ *
  * AboutShowcase — pinned horizontal scroll slider.
  * Directly after the About statement: the section pins while a track
- * of full-height cards (brand text panels, factory imagery, video)
- * scrolls sideways 1:1 with vertical scroll, then releases. Mobile
- * falls back to a native swipe carousel (no pin) for performance.
+ * of full-height cards (brand text panels, factory imagery, closing
+ * brand mark) scrolls sideways 1:1 with vertical scroll, then releases.
+ * Mobile falls back to a native swipe carousel (no pin) for performance.
  * ------------------------------------------------------------------ */
+
+/**
+ * Corner logo for the text cards. `brightness-0 invert` renders the colour
+ * logo pure white so it stays legible on orange and navy — same treatment
+ * the footer uses.
+ */
+function BrandMark() {
+  return (
+    <img
+      src="/worldflow-logo.webp"
+      alt="WorldFlow"
+      loading="lazy"
+      className="ml-auto h-7 w-auto opacity-90 brightness-0 invert"
+    />
+  );
+}
 
 export default function AboutShowcase() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -72,20 +88,15 @@ export default function AboutShowcase() {
                   requirements — and we work closely with our partners to
                   deliver piping solutions tailored to their specific needs.
                 </p>
-                <img
-                  src="/worldflow-logo.webp"
-                  alt="WorldFlow"
-                  loading="lazy"
-                  className="ml-auto h-7 w-auto opacity-90"
-                />
+                <BrandMark />
               </div>
             </article>
 
             {/* 02 — factory image with overlay line */}
             <article className={`${cardBase} bg-knavy`}>
               <img
-                src="/about-facility.jpg"
-                alt="WorldFlow production facility"
+                src="/factory/moulding-hall.jpg"
+                alt="Injection moulding machines on the WorldFlow production floor"
                 loading="lazy"
                 className="absolute inset-0 h-full w-full object-cover"
               />
@@ -106,26 +117,19 @@ export default function AboutShowcase() {
                   combining dependable products, precision engineering, and
                   the expertise today&apos;s demanding projects require.
                 </p>
-                <img
-                  src="/worldflow-logo.webp"
-                  alt="WorldFlow"
-                  loading="lazy"
-                  className="ml-auto h-7 w-auto opacity-90"
-                />
+                <BrandMark />
               </div>
             </article>
 
-            {/* 04 — video card */}
+            {/* 04 — closing brand card: the golden WorldFlow mark on the
+                office signage wall. Full-bleed, no overlay — the mark is
+                the statement. */}
             <article className={`${cardBase} bg-knavy`}>
-              <video
-                className="absolute inset-0 h-full w-full object-cover"
-                src="/hero.mp4"
-                autoPlay
-                muted
-                loop
-                playsInline
-                controls
-                preload="metadata"
+              <img
+                src="/factory/reception-signage.jpg"
+                alt="The golden WorldFlow mark on the office signage wall"
+                loading="lazy"
+                className="absolute inset-0 h-full w-full object-cover object-center"
               />
             </article>
           </div>

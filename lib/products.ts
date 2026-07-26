@@ -28,7 +28,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
   {
     slug: "cpvc-plumbing-pipes",
     title: "CPVC Plumbing Pipes",
-    image: "/11 1.png",
+    image: "/products/cpvc-pipes-fittings.jpg",
     intro: [
       "WorldFlow CPVC Pipes and Fittings are designed to provide efficient, reliable, and long-lasting solutions for hot and cold water applications. Manufactured using advanced Chlorinated Polyvinyl Chloride (CPVC) material, these products are known for their high thermal resistance, durability, and ability to withstand extreme temperatures and pressures. With compliance to Indian and international standards, our CPVC systems are ideal for both residential and commercial plumbing.",
       "Being one of the emerging brands of CPVC pipes & fittings, we never compromise on quality. Every batch of material we use meets ISI standards, so the finished pipe performs exactly as engineered across multiple uses. Our products are available in different sizes, thicknesses, and radii to cater to the varied demands of our customers.",
@@ -134,7 +134,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
   {
     slug: "upvc-plumbing-pipes",
     title: "UPVC Plumbing Pipes & Fittings",
-    image: "/9 1.png",
+    image: "/products/upvc-pipes-fittings.jpg",
     intro: [
       "WorldFlow UPVC Pipes and Fittings deliver dependable cold-water plumbing for homes, buildings, and agriculture. Manufactured from unplasticised PVC with high impact strength, they are lead-free, corrosion-proof, and built to carry pressure reliably year after year. Full compliance with Indian standards makes them a safe choice for potable water supply.",
       "Our complete range of pipes and matching fittings is engineered to slot together seamlessly — no leaks, no guesswork. Multiple sizes and pressure classes are produced on modern extrusion lines with batch-level testing, so every length that leaves our facility performs exactly as specified.",
@@ -235,7 +235,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
   {
     slug: "swr-drainage-system",
     title: "SWR Drainage System",
-    image: "/4 2.png",
+    image: "/products/swr-fittings-2.jpg",
     intro: [
       "WorldFlow SWR (Soil, Waste & Rainwater) pipes and fittings form a complete above-ground drainage system for modern buildings. Manufactured to IS 13592, they carry soil, waste, and rainwater quietly and reliably — with high impact strength, UV stabilisation for exposed stacks, and chemical resistance for everyday household effluents.",
       "The system is available in both pasting (solvent) and ring-fit (rubber seal) variants, with a full range of bends, tees, traps, and cowls, so every stack and branch on the drawing can be built from one matched product family.",
@@ -336,7 +336,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
   {
     slug: "column-pipes",
     title: "Column Pipes",
-    image: "/2 1.png",
+    image: "/products/column-pipes.png",
     intro: [
       "WorldFlow Column Pipes are engineered to suspend submersible pumps deep inside borewells and carry water to the surface under continuous pressure. Precision square threads, high tensile load capacity, and rubber sealing rings make every joint strong, leak-proof, and quick to install or retrieve.",
       "Produced from high-grade UPVC with strict batch testing, our column pipes resist corrosion, scale, and sand abrasion far better than GI alternatives — protecting the pump investment and delivering consistent output for years.",

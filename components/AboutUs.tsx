@@ -6,7 +6,7 @@ import SplitReveal from "@/components/SplitReveal";
 /* ------------------------------------------------------------------ *
  * AboutUs — "Infrastructure Excellence" split section.
  * Left: heading (first word in brand colour) + supporting copy.
- * Right: large rounded media card (/public/about-facility.jpg).
+ * Right: large rounded media card (/public/factory/injection-moulding.jpg).
  * ------------------------------------------------------------------ */
 
 // Faint technical-drawing watermark behind the section (subtle, on-brand).
@@ -54,8 +54,8 @@ export default function AboutUs() {
         <Reveal delay={0.1}>
           <figure className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl bg-gradient-to-br from-[#3a2417] via-[#1c130d] to-black shadow-[0_30px_60px_-20px_rgba(0,0,0,0.45)]">
             <img
-              src="/about-facility.jpg"
-              alt="WorldFlow manufacturing facilities"
+              src="/factory/injection-moulding.jpg"
+              alt="CPVC injection moulding machine at the WorldFlow manufacturing facility"
               className="absolute inset-0 h-full w-full object-cover"
               loading="lazy"
             />

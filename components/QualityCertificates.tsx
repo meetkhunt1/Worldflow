@@ -17,9 +17,9 @@ type Certificate = { title: string; image: string; blurb: string };
 
 const CERTIFICATES: Certificate[] = [
   {
-    title: "Certificate of Conformity",
+    title: "CE Certificate of Conformity",
     image: "/certificates/certificate-of-conformity.jpg",
-    blurb: "Product conformity to the applicable Indian standards.",
+    blurb: "EC conformity for pipes & fittings, certified by ICI UK.",
   },
   {
     title: "Certificate of Registration",

@@ -24,15 +24,17 @@ const STATS: { left: Stat; right: Stat } = {
   right: { value: 1000, suffix: "+", label: "Happy Clients" },
 };
 
-const PILLS = [
-  "UPVC Pipes",
-  "CPVC Pipes",
-  "SWR Pipes",
-  "HDPE Pipes",
-  "Column Pipes",
-  "Casing Pipes",
-  "Agriculture Pipes",
-  "Garden Pipes",
+// Export / distribution markets shown as flag pills under the map.
+// TODO: confirm the final country list with the client.
+const COUNTRIES = [
+  { name: "India", code: "in" },
+  { name: "UAE", code: "ae" },
+  { name: "Saudi Arabia", code: "sa" },
+  { name: "Oman", code: "om" },
+  { name: "Qatar", code: "qa" },
+  { name: "Kuwait", code: "kw" },
+  { name: "Nepal", code: "np" },
+  { name: "Sri Lanka", code: "lk" },
 ];
 
 export default function AboutGlobalPresence() {
@@ -116,7 +118,7 @@ export default function AboutGlobalPresence() {
         <div className="relative mx-auto mt-12 max-w-6xl md:mt-16">
           {/* Stats: inline row on mobile, flanking the map from lg up */}
           <div className="mb-10 flex items-start justify-center gap-14 lg:mb-0 lg:contents">
-            <div className="gp-stat lg:absolute lg:left-0 lg:top-[38%] lg:z-10">
+            <div className="gp-stat lg:absolute lg:-left-6 lg:top-[38%] lg:z-10 xl:-left-10">
               <div
                 data-count={STATS.left.value}
                 data-suffix={STATS.left.suffix}
@@ -130,7 +132,7 @@ export default function AboutGlobalPresence() {
               </p>
             </div>
 
-            <div className="gp-stat lg:absolute lg:right-0 lg:top-[38%] lg:z-10">
+            <div className="gp-stat lg:absolute lg:-right-6 lg:top-[38%] lg:z-10 xl:-right-10 lg:text-right">
               <div
                 data-count={STATS.right.value}
                 data-suffix={STATS.right.suffix}
@@ -156,7 +158,7 @@ export default function AboutGlobalPresence() {
             <span
               data-gp-word
               aria-hidden
-              className="pointer-events-none absolute inset-0 grid select-none place-items-center font-display text-[clamp(2.6rem,10vw,120px)] font-bold uppercase leading-none tracking-tight text-white [text-shadow:0_2px_18px_rgba(27,36,49,0.18)]"
+              className="pointer-events-none absolute inset-0 grid select-none place-items-center font-display text-[clamp(2.6rem,10vw,120px)] font-bold uppercase leading-none tracking-tight text-white [text-shadow:0_2px_12px_rgba(27,36,49,0.3),0_10px_44px_rgba(27,36,49,0.45)]"
             >
               Worldflow
             </span>
@@ -164,12 +166,19 @@ export default function AboutGlobalPresence() {
 
           {/* Product range pills overlapping the lower map */}
           <div className="relative z-10 mx-auto -mt-4 flex max-w-4xl flex-wrap items-center justify-center gap-3 md:-mt-10 md:gap-4">
-            {PILLS.map((pill) => (
+            {COUNTRIES.map((country) => (
               <span
-                key={pill}
-                className="gp-pill rounded-full border border-knavy/5 bg-white px-6 py-3 font-book text-[14px] font-semibold text-knavy shadow-[0_10px_28px_-16px_rgba(27,36,49,0.35)] transition-all duration-300 ease-sc hover:-translate-y-0.5 hover:border-korange hover:text-korange md:px-7 md:text-[16px]"
+                key={country.name}
+                className="gp-pill flex items-center gap-2.5 rounded-full border border-knavy/5 bg-white px-6 py-3 font-book text-[14px] font-semibold text-knavy shadow-[0_10px_28px_-16px_rgba(27,36,49,0.35)] transition-all duration-300 ease-sc hover:-translate-y-0.5 hover:border-korange hover:text-korange md:px-7 md:text-[16px]"
               >
-                {pill}
+                <img
+                  src={`https://flagcdn.com/w40/${country.code}.png`}
+                  srcSet={`https://flagcdn.com/w80/${country.code}.png 2x`}
+                  alt={`${country.name} flag`}
+                  loading="lazy"
+                  className="h-[15px] w-5 rounded-[3px] object-cover"
+                />
+                {country.name}
               </span>
             ))}
           </div>
