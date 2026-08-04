@@ -34,9 +34,9 @@ const TILES: GalleryTile[] = [
   { title: "Mould Library", image: "/factory/mould-store.jpg", imagePosition: "object-center", height: "h-[300px]" },
   { title: "Finished Goods Store", image: "/factory/warehouse.jpg", imagePosition: "object-center", height: "h-[360px]" },
   { title: "Packing & Dispatch", image: "/factory/packaging.jpg", imagePosition: "object-center", height: "h-[320px]" },
-  // The straight-on signage shot is the closing card in AboutShowcase on
-  // this same page — only the angled one appears here, to avoid a repeat.
-  { title: "Corporate Office", image: "/factory/reception-signage-angle.jpg", imagePosition: "object-center", height: "h-[400px]" },
+  // The tight signage crop is the closing card in AboutShowcase on this same
+  // page, so the gallery shows the wider reception view instead of repeating it.
+  { title: "Corporate Office", image: "/factory/reception-desk.jpg", imagePosition: "object-center", height: "h-[400px]" },
 ];
 
 export default function AboutGallery() {

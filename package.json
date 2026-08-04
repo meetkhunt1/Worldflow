@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "clean": "node -e \"for (const d of ['.next','.next-dev']) require('fs').rmSync(d,{recursive:true,force:true})\""
   },
   "dependencies": {
     "@gsap/react": "^2.1.1",

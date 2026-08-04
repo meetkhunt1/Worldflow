@@ -14,9 +14,7 @@ import { footerContact } from "@/lib/data";
 const inputClasses =
   "w-full rounded-t-md border-b border-knavy/30 bg-soft px-4 py-3 font-book text-[15px] text-knavy placeholder:text-muted/70 outline-none transition-colors focus:border-korange";
 
-const MAP_EMBED = `https://www.google.com/maps?q=${encodeURIComponent(
-  footerContact.address
-)}&output=embed`;
+const MAP_EMBED = footerContact.mapEmbed;
 
 const SOCIALS = [
   {
@@ -78,9 +76,14 @@ export default function ContactSection() {
               <h2 className="font-book text-[15px] font-bold uppercase tracking-[0.14em] text-muted">
                 Location
               </h2>
-              <p className="mt-3 max-w-sm font-book text-[16px] leading-relaxed text-knavy">
+              <a
+                href={footerContact.mapLink}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-3 block max-w-sm font-book text-[16px] leading-relaxed text-knavy transition-colors hover:text-korange"
+              >
                 {footerContact.address}
-              </p>
+              </a>
 
               <h2 className="mt-7 font-book text-[15px] font-bold uppercase tracking-[0.14em] text-muted">
                 Write us
@@ -95,15 +98,19 @@ export default function ContactSection() {
               <h2 className="mt-7 font-book text-[15px] font-bold uppercase tracking-[0.14em] text-muted">
                 Call us
               </h2>
-              <div className="mt-2 flex flex-wrap gap-x-6 gap-y-1">
+              <div className="mt-2 flex flex-wrap gap-x-10 gap-y-3">
                 {footerContact.phones.map((phone) => (
-                  <a
-                    key={phone}
-                    href={`tel:${phone.replace(/\s/g, "")}`}
-                    className="font-book text-[16px] text-knavy transition-colors hover:text-korange"
-                  >
-                    {phone}
-                  </a>
+                  <div key={phone.number}>
+                    <span className="block font-book text-[12px] font-bold uppercase tracking-[0.14em] text-muted">
+                      {phone.label}
+                    </span>
+                    <a
+                      href={`tel:${phone.number.replace(/\s/g, "")}`}
+                      className="font-book text-[16px] text-knavy transition-colors hover:text-korange"
+                    >
+                      {phone.number}
+                    </a>
+                  </div>
                 ))}
               </div>
 
@@ -133,9 +140,10 @@ export default function ContactSection() {
             <div className="h-full min-h-[380px] overflow-hidden rounded-2xl bg-white shadow-[0_4px_14px_-12px_rgba(27,36,49,0.3)]">
               <iframe
                 src={MAP_EMBED}
-                title="WorldFlow location map"
+                title="WorldFlow Pipes & Fittings location map"
                 loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+                referrerPolicy="strict-origin-when-cross-origin"
                 className="h-full w-full border-0"
               />
             </div>

@@ -30,6 +30,12 @@ type LineupItem = {
   sm?: boolean; // when false, hidden on mobile so the row never overflows
 };
 
+// The CPVC range shares one piece of product artwork (mitred-top pipe with
+// the anti-microbial print). All three CPVC positions reuse it at different
+// heights, so the ratio is declared once and stays in sync with the file.
+const CPVC_ARTWORK = "/line/cpvc.png";
+const CPVC_RATIO = 0.178; // 146 x 819 px trimmed cutout
+
 // Left -> right, grouped like the reference: white bottles, white pipes,
 // tan pipes, grey socket pipes. Heights follow each product's real
 // proportions; the tall white pipe (index 5) is the landing slot.
@@ -38,9 +44,9 @@ const LINEUP: LineupItem[] = [
   { src: "/line/02.png", name: "Column Pipe", ratio: 0.251, mult: 0.48, sm: false },
   { src: "/line/03.png", name: "Column Pipe", ratio: 0.247, mult: 0.75 },
   { src: "/line/04.png", name: "Column Pipe", ratio: 0.253, mult: 0.62, sm: false },
-  { src: "/line/08.png", name: "CPVC Plumbing Pipe", ratio: 0.226, mult: 0.68 },
-  { src: "/line/09.png", name: "CPVC Plumbing Pipe", ratio: 0.273, mult: 0.95, slot: true }, // tall tan pipe — traveller
-  { src: "/line/10.png", name: "CPVC Plumbing Pipe", ratio: 0.254, mult: 0.53, sm: false },
+  { src: CPVC_ARTWORK, name: "CPVC Plumbing Pipe", ratio: CPVC_RATIO, mult: 0.68 },
+  { src: CPVC_ARTWORK, name: "CPVC Plumbing Pipe", ratio: CPVC_RATIO, mult: 0.95, slot: true }, // tan CPVC pipe — traveller
+  { src: CPVC_ARTWORK, name: "CPVC Plumbing Pipe", ratio: CPVC_RATIO, mult: 0.53, sm: false },
   { src: "/line/05.png", name: "UPVC Plumbing Pipe", ratio: 0.324, mult: 0.62 },
   { src: "/line/06.png", name: "UPVC Plumbing Pipe", ratio: 0.273, mult: 1.0 }, // tall white pipe
   { src: "/line/07.png", name: "UPVC Plumbing Pipe", ratio: 0.467, mult: 0.49, sm: false },

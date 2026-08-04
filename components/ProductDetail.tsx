@@ -288,11 +288,11 @@ function BrochureModal({
     };
   }, [open, onClose]);
 
-  // Placeholder download target — swap for the real brochure PDF
-  // (e.g. `/brochures/${product.slug}.pdf`) once it exists.
+  // The modal is only mounted for products that have a catalogue, so the
+  // path is always present by the time this runs.
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    window.open(product.image, "_blank");
+    window.open(product.brochure, "_blank", "noopener");
     onClose();
   };
 
@@ -333,7 +333,7 @@ function BrochureModal({
               </button>
             </div>
             <p className="mt-2 font-book text-[14px] leading-relaxed text-muted">
-              Share a few details and the {product.title} brochure will open
+              Share a few details and the {product.title} catalogue will open
               right away.
             </p>
 
@@ -371,8 +371,39 @@ function BrochureModal({
   );
 }
 
+/* ---- Disabled brochure button ------------------------------------- *
+ * Used where the catalogue is not published yet. The button itself is
+ * disabled (so it can't be clicked or tabbed into), and the hover state
+ * lives on the wrapper — a disabled control fires no pointer events of
+ * its own. Tapping is covered by the label change, not the tooltip.
+ * ------------------------------------------------------------------- */
+function BrochureComingSoon() {
+  return (
+    <span className="group relative inline-block">
+      <button
+        type="button"
+        disabled
+        aria-describedby="brochure-coming-soon"
+        className="cursor-not-allowed rounded-md border border-knavy/20 px-7 py-3.5 font-book text-[15px] font-semibold text-muted"
+      >
+        Download Brochure
+      </button>
+
+      <span
+        id="brochure-coming-soon"
+        role="tooltip"
+        className="pointer-events-none absolute bottom-full left-1/2 mb-2 -translate-x-1/2 translate-y-1 whitespace-nowrap rounded-md bg-knavy px-3 py-1.5 font-book text-[13px] font-semibold text-white opacity-0 shadow-[0_10px_24px_-12px_rgba(0,0,0,0.5)] transition-all duration-300 ease-sc group-hover:translate-y-0 group-hover:opacity-100"
+      >
+        Coming soon
+      </span>
+    </span>
+  );
+}
+
 export default function ProductDetail({ product }: { product: ProductPage }) {
   const [brochureOpen, setBrochureOpen] = useState(false);
+  // A product is only offered a download once its catalogue PDF exists.
+  const brochureReady = Boolean(product.brochure);
 
   return (
     <>
@@ -411,12 +442,16 @@ export default function ProductDetail({ product }: { product: ProductPage }) {
                   >
                     Enquire Now
                   </Link>
-                  <button
-                    onClick={() => setBrochureOpen(true)}
-                    className="btn-fill btn-fill-orange rounded-md border border-korange px-7 py-3.5 font-book text-[15px] font-semibold text-korange transition-colors duration-300 ease-sc hover:text-white"
-                  >
-                    Download Brochure
-                  </button>
+                  {brochureReady ? (
+                    <button
+                      onClick={() => setBrochureOpen(true)}
+                      className="btn-fill btn-fill-orange rounded-md border border-korange px-7 py-3.5 font-book text-[15px] font-semibold text-korange transition-colors duration-300 ease-sc hover:text-white"
+                    >
+                      Download Brochure
+                    </button>
+                  ) : (
+                    <BrochureComingSoon />
+                  )}
                 </div>
               </Reveal>
             </div>
@@ -466,11 +501,13 @@ export default function ProductDetail({ product }: { product: ProductPage }) {
         </div>
       </section>
 
-      <BrochureModal
-        product={product}
-        open={brochureOpen}
-        onClose={() => setBrochureOpen(false)}
-      />
+      {brochureReady && (
+        <BrochureModal
+          product={product}
+          open={brochureOpen}
+          onClose={() => setBrochureOpen(false)}
+        />
+      )}
     </>
   );
 }

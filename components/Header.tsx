@@ -5,6 +5,8 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { productMenu } from "@/lib/data";
+import { getLenis } from "@/lib/lenis";
+import FlagIcon from "@/components/FlagIcon";
 
 const easeSc = [0.25, 0.1, 0.25, 1] as const;
 
@@ -106,8 +108,9 @@ function LanguageSwitcher() {
         onClick={() => setOpen((v) => !v)}
         aria-haspopup="listbox"
         aria-expanded={open}
-        className="flex items-center gap-1.5 text-[15px] font-medium text-knavy transition-colors hover:text-korange"
+        className="flex items-center gap-2 text-[15px] font-medium text-knavy transition-colors hover:text-korange"
       >
+        <FlagIcon code={lang.code} className="h-3.5 w-5" />
         <span className="notranslate" translate="no">
           {lang.short}
         </span>
@@ -144,7 +147,10 @@ function LanguageSwitcher() {
                   }`}
                   translate="no"
                 >
-                  {l.label}
+                  <span className="flex items-center gap-2.5">
+                    <FlagIcon code={l.code} className="h-3.5 w-5" />
+                    {l.label}
+                  </span>
                   <span className="text-xs font-semibold uppercase tracking-wide opacity-60">
                     {l.short}
                   </span>
@@ -162,6 +168,7 @@ const NAV: NavItem[] = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about" },
   { label: "Product", href: "/products", mega: true },
+  { label: "Infrastructure", href: "/infrastructure" },
   { label: "Career", href: "/career" },
   { label: "Dealer Inquiry", href: "/contact" },
   { label: "Quality & Certifications", href: "/quality-certifications" },
@@ -181,12 +188,27 @@ export default function Header() {
       ? pathname === "/"
       : pathname === href || pathname.startsWith(`${href}/`);
 
+  // Freeze the page behind the drawer. Lenis scrolls the window itself, so it
+  // has to be stopped explicitly; the overflow lock covers the no-Lenis case.
   useEffect(() => {
-    document.documentElement.style.overflow = open ? "hidden" : "";
+    const lenis = getLenis();
+    if (open) {
+      lenis?.stop();
+      document.documentElement.style.overflow = "hidden";
+    } else {
+      lenis?.start();
+      document.documentElement.style.overflow = "";
+    }
     return () => {
+      getLenis()?.start();
       document.documentElement.style.overflow = "";
     };
   }, [open]);
+
+  // Close the drawer on navigation so it never survives a route change.
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
 
   // Smart sticky: slide the header up when scrolling down, back down when
   // scrolling up. Uses transform (no fade), and always shows near the top.
@@ -213,14 +235,15 @@ export default function Header() {
   const isHidden = hidden && !open;
 
   return (
-    <header
-      className={`pointer-events-none fixed inset-x-0 top-0 z-50 px-4 pt-5 transition-transform duration-500 ease-sc md:px-8 ${
-        isHidden ? "-translate-y-[130%]" : "translate-y-0"
-      }`}
-    >
-      {/* Wrapper is the hover zone for the mega menu (pill + panel). */}
+    <header className="pointer-events-none fixed inset-x-0 top-0 z-50 px-4 pt-5 md:px-8">
+      {/* Wrapper is the hover zone for the mega menu (pill + panel), and it
+          carries the smart-sticky slide. The transform must NOT sit on
+          <header>: a transformed ancestor becomes the containing block for
+          the fixed mobile drawer below, collapsing it to the header's box. */}
       <div
-        className="pointer-events-auto relative mx-auto w-full max-w-shell"
+        className={`pointer-events-auto relative z-50 mx-auto w-full max-w-shell transition-transform duration-500 ease-sc ${
+          isHidden ? "-translate-y-[130%]" : "translate-y-0"
+        }`}
         onMouseLeave={() => setMegaOpen(false)}
       >
         <div className="flex w-full items-center justify-between gap-4 rounded-full bg-white px-5 py-3 shadow-[0_6px_24px_-14px_rgba(0,0,0,0.18)] md:px-7">
@@ -329,48 +352,63 @@ export default function Header() {
       <AnimatePresence>
         {open && (
           <motion.div
-            className="pointer-events-auto fixed inset-0 z-40 bg-white pt-28 lg:hidden"
+            /* 100dvh, not the inset-0 default: on mobile browsers 100vh
+               includes the area behind the address bar, which hid the last
+               item. inset-0 stays as the fallback for older engines. */
+            className="pointer-events-auto fixed inset-0 z-40 flex h-[100dvh] flex-col bg-white pt-28 lg:hidden"
             initial={{ x: "-100%" }}
             animate={{ x: 0 }}
             exit={{ x: "-100%" }}
             transition={{ duration: 0.4, ease: easeSc }}
           >
-            <div className="flex h-full flex-col gap-1 overflow-y-auto px-6 py-4 text-lg">
-              {NAV.map((item) => (
-                <div key={item.href} className="border-b border-black/10">
-                  <a
-                    onClick={() => setOpen(false)}
-                    className={`block py-4 font-semibold ${
-                      isActive(item.href) ? "text-korange" : "text-knavy"
-                    }`}
-                    href={item.href}
-                  >
-                    {item.label}
-                  </a>
-                  {/* Product sub-links */}
-                  {item.mega && (
-                    <div className="flex flex-col gap-1 pb-4 pl-4">
-                      {productMenu.map((p) => (
-                        <a
-                          key={p.href}
-                          onClick={() => setOpen(false)}
-                          href={p.href}
-                          className="py-1.5 text-[16px] text-knavy/80"
-                        >
-                          {p.label}
-                        </a>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
-              <a
-                onClick={() => setOpen(false)}
-                href="/contact"
-                className="btn-fill btn-fill-navy mt-6 self-start rounded-full bg-korange px-8 py-3 text-[16px] font-semibold text-white"
-              >
-                Contact Us
-              </a>
+            {/* min-h-0 lets this pane shrink inside the flex column so it
+                scrolls, instead of the links being squeezed to fit.
+                data-lenis-prevent hands touch scrolling back to the panel;
+                without it Lenis swallows the gesture. */}
+            <div
+              data-lenis-prevent
+              className="min-h-0 flex-1 overflow-y-auto overscroll-contain"
+            >
+              {/* Block, not flex: a flex scroll container clips its last
+                  child's bottom padding, which cut the CTA in half. The
+                  safe-area inset clears the iOS home indicator. */}
+              <div className="px-6 pb-[calc(4rem_+_env(safe-area-inset-bottom))] pt-4 text-lg">
+                {NAV.map((item) => (
+                  <div key={item.href} className="border-b border-black/10">
+                    <a
+                      onClick={() => setOpen(false)}
+                      className={`block py-4 font-semibold ${
+                        isActive(item.href) ? "text-korange" : "text-knavy"
+                      }`}
+                      href={item.href}
+                    >
+                      {item.label}
+                    </a>
+                    {/* Product sub-links */}
+                    {item.mega && (
+                      <div className="flex flex-col gap-1 pb-4 pl-4">
+                        {productMenu.map((p) => (
+                          <a
+                            key={p.href}
+                            onClick={() => setOpen(false)}
+                            href={p.href}
+                            className="py-1.5 text-[16px] text-knavy/80"
+                          >
+                            {p.label}
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ))}
+                <a
+                  onClick={() => setOpen(false)}
+                  href="/contact"
+                  className="btn-fill btn-fill-navy mt-6 inline-block rounded-full bg-korange px-8 py-3 text-[16px] font-semibold text-white"
+                >
+                  Contact Us
+                </a>
+              </div>
             </div>
           </motion.div>
         )}

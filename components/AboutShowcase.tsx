@@ -95,8 +95,8 @@ export default function AboutShowcase() {
             {/* 02 — factory image with overlay line */}
             <article className={`${cardBase} bg-knavy`}>
               <img
-                src="/factory/moulding-hall.jpg"
-                alt="Injection moulding machines on the WorldFlow production floor"
+                src="/factory/injection-moulding.jpg"
+                alt="CPVC injection moulding machine at the WorldFlow manufacturing facility"
                 loading="lazy"
                 className="absolute inset-0 h-full w-full object-cover"
               />

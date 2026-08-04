@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import Lenis from "@studio-freight/lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { setLenis } from "@/lib/lenis";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,6 +16,9 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
       smoothWheel: true,
       touchMultiplier: 1.4,
     });
+
+    // Share the instance so overlays can freeze/resume the page scroll.
+    setLenis(lenis);
 
     // Keep ScrollTrigger perfectly in sync with Lenis' smoothed scroll position.
     lenis.on("scroll", ScrollTrigger.update);
@@ -38,6 +42,7 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
       lenis.off("scroll", ScrollTrigger.update);
       gsap.ticker.remove(raf);
       lenis.destroy();
+      setLenis(null);
     };
   }, []);
 

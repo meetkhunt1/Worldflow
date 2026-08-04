@@ -6,12 +6,29 @@ import SplitReveal from "@/components/SplitReveal";
 /* ------------------------------------------------------------------ *
  * AboutUs — "Infrastructure Excellence" split section.
  * Left: heading (first word in brand colour) + supporting copy.
- * Right: large rounded media card (/public/factory/injection-moulding.jpg).
+ * Right: photo cluster — wide moulding frame over a mixing plant / lab row.
  * ------------------------------------------------------------------ */
 
 // Faint technical-drawing watermark behind the section (subtle, on-brand).
 const BLUEPRINT_BG =
   "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='180' viewBox='0 0 220 180'%3E%3Cg fill='none' stroke='%23000' stroke-width='1' opacity='0.5'%3E%3Crect x='30' y='40' width='90' height='60' rx='6'/%3E%3Ccircle cx='75' cy='70' r='16'/%3E%3Ccircle cx='75' cy='70' r='7'/%3E%3Ccircle cx='45' cy='52' r='3'/%3E%3Ccircle cx='105' cy='52' r='3'/%3E%3Ccircle cx='45' cy='88' r='3'/%3E%3Ccircle cx='105' cy='88' r='3'/%3E%3Crect x='150' y='90' width='50' height='70' rx='5'/%3E%3Ccircle cx='175' cy='125' r='12'/%3E%3C/g%3E%3C/svg%3E\")";
+
+/* Media cluster: one wide lead frame over a 2-up row, matching the photo
+ * clusters on the infrastructure page. First entry spans both columns. */
+const MEDIA = [
+  {
+    src: "/factory/injection-moulding.jpg",
+    alt: "CPVC injection moulding machine at the WorldFlow manufacturing facility",
+  },
+  {
+    src: "/factory/mixing-plant.jpg",
+    alt: "Automated raw-material mixing plant feeding the WorldFlow extrusion lines",
+  },
+  {
+    src: "/factory/testing-lab.jpg",
+    alt: "In-house testing laboratory at the WorldFlow facility",
+  },
+];
 
 export default function AboutUs() {
   return (
@@ -50,17 +67,29 @@ export default function AboutUs() {
           </Reveal>
         </div>
 
-        {/* Right — media card */}
-        <Reveal delay={0.1}>
-          <figure className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl bg-gradient-to-br from-[#3a2417] via-[#1c130d] to-black shadow-[0_30px_60px_-20px_rgba(0,0,0,0.45)]">
-            <img
-              src="/factory/injection-moulding.jpg"
-              alt="CPVC injection moulding machine at the WorldFlow manufacturing facility"
-              className="absolute inset-0 h-full w-full object-cover"
-              loading="lazy"
-            />
-          </figure>
-        </Reveal>
+        {/* Right — wide lead frame over a 2-up row */}
+        <div className="grid grid-cols-2 gap-4">
+          {MEDIA.map((m, i) => (
+            <Reveal
+              key={m.src}
+              delay={0.1 + i * 0.1}
+              className={i === 0 ? "col-span-2" : undefined}
+            >
+              <figure
+                className={`relative w-full overflow-hidden rounded-2xl bg-gradient-to-br from-[#3a2417] via-[#1c130d] to-black shadow-[0_30px_60px_-20px_rgba(0,0,0,0.45)] ${
+                  i === 0 ? "aspect-[16/8]" : "aspect-[4/3]"
+                }`}
+              >
+                <img
+                  src={m.src}
+                  alt={m.alt}
+                  className="absolute inset-0 h-full w-full object-cover"
+                  loading="lazy"
+                />
+              </figure>
+            </Reveal>
+          ))}
+        </div>
       </div>
     </section>
   );

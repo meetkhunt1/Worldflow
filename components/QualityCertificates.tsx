@@ -41,6 +41,11 @@ const CERTIFICATES: Certificate[] = [
     image: "/certificates/zed-pledge.jpg",
     blurb: "Zero Defect, Zero Effect — MSME Sustainable (ZED) Certification Scheme.",
   },
+  {
+    title: "Importer-Exporter Code",
+    image: "/certificates/iec-certificate.jpg",
+    blurb: "IEC issued by the DGFT, Ministry of Commerce & Industry — cleared for import and export.",
+  },
 ];
 
 export default function QualityCertificates() {
