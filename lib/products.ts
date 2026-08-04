@@ -14,6 +14,23 @@ export type ProductFaq = { question: string; answer: string };
 
 export type ProductPage = {
   slug: string;
+  /* ---------------------------------------------------------------- *
+   * SEO — edit these two fields to change what Google shows for this
+   * product page. They are the ONLY fields here that do not appear
+   * anywhere on the page itself, so changing them is always safe.
+   *
+   * seoTitle       the full <title> tag, written out end to end
+   *                (include the "| WorldFlow" suffix yourself).
+   *                Keep it under ~60 characters.
+   * seoDescription the <meta name="description"> text.
+   *                Keep it under ~155 characters — Google truncates
+   *                anything longer.
+   *
+   * Both are optional. If omitted, the page falls back to
+   * `${title} | WorldFlow` and the first `intro` paragraph.
+   * ---------------------------------------------------------------- */
+  seoTitle?: string;
+  seoDescription?: string;
   title: string;
   image: string;
   /** Hero intro paragraphs (rendered in order). */
@@ -33,6 +50,9 @@ export type ProductPage = {
 export const PRODUCT_PAGES: ProductPage[] = [
   {
     slug: "cpvc-plumbing-pipes",
+    seoTitle: "CPVC Plumbing Pipes & Fittings | WorldFlow",
+    seoDescription:
+      "WorldFlow CPVC pipes and fittings for hot and cold water — rated to 93°C, made to IS 15778, lead-free and engineered for 50+ years of service.",
     title: "CPVC Plumbing Pipes",
     image: "/products/cpvc-pipes-fittings.jpg",
     brochure: "/brochures/cpvc-plumbing-pipes.pdf",
@@ -140,6 +160,9 @@ export const PRODUCT_PAGES: ProductPage[] = [
   },
   {
     slug: "upvc-plumbing-pipes",
+    seoTitle: "UPVC Plumbing Pipes & Fittings | WorldFlow",
+    seoDescription:
+      "Lead-free WorldFlow UPVC pipes and fittings for cold water plumbing — IS 4985 compliant, 4 to 16 kgf/cm² classes, corrosion-proof and quick to install.",
     title: "UPVC Plumbing Pipes & Fittings",
     image: "/products/upvc-pipes-fittings.jpg",
     brochure: "/brochures/upvc-plumbing-pipes.pdf",
@@ -242,6 +265,9 @@ export const PRODUCT_PAGES: ProductPage[] = [
   },
   {
     slug: "swr-drainage-system",
+    seoTitle: "SWR Drainage Pipes & Fittings | WorldFlow",
+    seoDescription:
+      "WorldFlow SWR soil, waste and rainwater pipes to IS 13592 — 75, 90 and 110 mm in ring-fit and pasting types, UV-stabilised for exposed stacks.",
     title: "SWR Drainage System",
     image: "/products/swr-fittings-2.jpg",
     brochure: "/brochures/swr-drainage-system.pdf",
@@ -344,6 +370,9 @@ export const PRODUCT_PAGES: ProductPage[] = [
   },
   {
     slug: "column-pipes",
+    seoTitle: "UPVC Column Pipes for Borewells | WorldFlow",
+    seoDescription:
+      "WorldFlow UPVC column pipes for submersible pumps — 1\" to 4\", precision square threads, rubber-sealed leak-proof joints, corrosion and scale proof.",
     title: "Column Pipes",
     image: "/products/column-pipes.png",
     // No catalogue yet — the hero button shows "Coming soon".
@@ -448,3 +477,22 @@ export const PRODUCT_PAGES: ProductPage[] = [
 
 export const getProductPage = (slug: string) =>
   PRODUCT_PAGES.find((p) => p.slug === slug);
+
+/**
+ * Resolved meta title + description for a product page.
+ *
+ * Prefers the hand-written `seoTitle` / `seoDescription` on the entry and
+ * falls back to the product title and first intro paragraph, so entries
+ * that have not been given SEO copy yet keep their previous behaviour.
+ * Also covers an unknown slug, which the route renders as a 404.
+ */
+export const getProductSeo = (slug: string) => {
+  const product = getProductPage(slug);
+  if (!product) {
+    return { title: "Products | WorldFlow", description: undefined };
+  }
+  return {
+    title: product.seoTitle ?? `${product.title} | WorldFlow`,
+    description: product.seoDescription ?? product.intro[0],
+  };
+};
