@@ -22,9 +22,9 @@ const almarai = Almarai({
 });
 
 export const metadata: Metadata = {
-  title: "WorldFlow | Pipes & Fittings",
+  title: "India's Leading Pipes & Fittings Manufacturer - WorldFlow Pipes & Fittings",
   description:
-    "The complete WorldFlow range — every pipe engineered to slot seamlessly into the system.",
+    "Choose WorldFlow Pipes & Fittings for high-quality CPVC, UPVC, SWR, PVC, and borewell column pipes. Trusted manufacturer in India delivering durable piping solutions for every project.",
   openGraph: {
     title: "WorldFlow | Pipes & Fittings",
     type: "website",
