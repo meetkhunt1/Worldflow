@@ -41,7 +41,7 @@ import Script from "next/script";
  * Paste it between the quotes, or set NEXT_PUBLIC_GA_ID in the hosting
  * environment if the ID should stay out of the repository.
  */
-const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID || "";
+// const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID || "";
 
 /**
  * Google Tag Manager container ID — looks like "GTM-XXXXXXX".
@@ -67,19 +67,21 @@ export default function Analytics() {
   return (
     <>
       {/* ---------- Google Analytics 4 ---------- */}
-      {GA_MEASUREMENT_ID && (
-        <>
-          <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-9529L6JMLC"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
+<>
+  <Script
+    src="https://www.googletagmanager.com/gtag/js?id=G-9529L6JMLC"
+    strategy="afterInteractive"
+  />
 
-           gtag('config', 'G-9529L6JMLC');
-          </script>
-        </>
-      )}
+  <Script id="google-analytics" strategy="afterInteractive">
+    {`
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-9529L6JMLC');
+    `}
+  </Script>
+</>
 
       {/* ---------- Google Tag Manager ---------- */}
       {GTM_CONTAINER_ID && (
