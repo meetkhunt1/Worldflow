@@ -7,6 +7,7 @@ import SmoothScroll from "@/components/SmoothScroll";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ButtonFx from "@/components/ButtonFx";
+import StickyContact from "@/components/StickyContact";
 
 // Body font: Figtree.  Headline font: Almarai (trial — was Roboto Condensed).
 const figtree = Figtree({
@@ -60,6 +61,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <main>{children}</main>
           <Footer />
         </SmoothScroll>
+        <StickyContact />
       </body>
     </html>
   );
