@@ -19,7 +19,7 @@ export default function SpoiledSmart() {
       >
         <div
           className="h-full w-full bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/spoiled%20are%20smary.jpeg')" }}
+          style={{ backgroundImage: "url('/spoiled-are-smary.webp')" }}
         />
       </motion.div>
 

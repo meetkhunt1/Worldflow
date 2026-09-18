@@ -26,32 +26,32 @@ const APPLICATIONS: Application[] = [
   {
     title: "Residential",
     blurb: "Dependable plumbing systems for homes, apartments, and housing developments.",
-    image: "/apps/01.png",
+    image: "/apps/01.webp",
   },
   {
     title: "Commercial",
     blurb: "High-capacity piping for offices, retail, and commercial complexes, built to code.",
-    image: "/apps/02.png",
+    image: "/apps/02.webp",
   },
   {
     title: "Agriculture",
     blurb: "Irrigation networks that deliver consistent water supply across every field.",
-    image: "/apps/03.png",
+    image: "/apps/03.webp",
   },
   {
     title: "Industrial",
     blurb: "Heavy-duty systems for process water and industrial fluid transport.",
-    image: "/apps/06.png",
+    image: "/apps/06.webp",
   },
   {
     title: "Infrastructure",
     blurb: "Engineered pipe systems for borewells, utilities, and public works projects.",
-    image: "/apps/04.png",
+    image: "/apps/04.webp",
   },
   {
     title: "Water Supply",
     blurb: "Reliable distribution and drainage networks for consistent water management.",
-    image: "/apps/05.png",
+    image: "/apps/05.webp",
   },
 ];
 

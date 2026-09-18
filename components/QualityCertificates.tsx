@@ -18,32 +18,32 @@ type Certificate = { title: string; image: string; blurb: string };
 const CERTIFICATES: Certificate[] = [
   {
     title: "CE Certificate of Conformity",
-    image: "/certificates/certificate-of-conformity.jpg",
+    image: "/certificates/certificate-of-conformity.webp",
     blurb: "EC conformity for pipes & fittings, certified by ICI UK.",
   },
   {
     title: "Certificate of Registration",
-    image: "/certificates/certificate-of-registration.jpg",
+    image: "/certificates/certificate-of-registration.webp",
     blurb: "ISO 9001:2015 registered quality management system.",
   },
   {
     title: "GST Certificate",
-    image: "/certificates/gst-certificate.jpg",
+    image: "/certificates/gst-certificate.webp",
     blurb: "Registered under the Goods & Services Tax regime.",
   },
   {
     title: "Trade Marks Registry",
-    image: "/certificates/trade-marks-registry.jpg",
+    image: "/certificates/trade-marks-registry.webp",
     blurb: "WorldFlow — a registered trademark brand.",
   },
   {
     title: "MSME ZED Pledge",
-    image: "/certificates/zed-pledge.jpg",
+    image: "/certificates/zed-pledge.webp",
     blurb: "Zero Defect, Zero Effect — MSME Sustainable (ZED) Certification Scheme.",
   },
   {
     title: "Importer-Exporter Code",
-    image: "/certificates/iec-certificate.jpg",
+    image: "/certificates/iec-certificate.webp",
     blurb: "IEC issued by the DGFT, Ministry of Commerce & Industry — cleared for import and export.",
   },
 ];

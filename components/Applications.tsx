@@ -24,37 +24,37 @@ const CARDS: AppCard[] = [
     title: "Residential Plumbing",
     blurb:
       "Reliable pipes for homes and residential buildings, ensuring long-lasting plumbing performance.",
-    image: "/apps/01.png",
+    image: "/apps/01.webp",
   },
   {
     title: "Commercial Buildings",
     blurb:
       "Durable, high-pressure piping for offices and commercial complexes, built to code.",
-    image: "/apps/02.png",
+    image: "/apps/02.webp",
   },
   {
     title: "Agricultural Irrigation",
     blurb:
       "Efficient piping solutions for irrigation systems, delivering consistent water supply across farms.",
-    image: "/apps/03.png",
+    image: "/apps/03.webp",
   },
   {
     title: "Borewell Installations",
     blurb:
       "High-strength pipes designed for borewell structures and submersible pump installations.",
-    image: "/apps/04.png",
+    image: "/apps/04.webp",
   },
   {
     title: "Drainage & Water Systems",
     blurb:
       "Reliable drainage pipes built for soil, waste, and rainwater — for consistent water management.",
-    image: "/apps/05.png",
+    image: "/apps/05.webp",
   },
   {
     title: "Industrial Fluid Transport",
     blurb:
       "Heavy-duty pipes suitable for industrial water and fluid transport systems.",
-    image: "/apps/06.png",
+    image: "/apps/06.webp",
   },
 ];
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { splitIntoChars } from "@/components/SplitReveal";
@@ -112,6 +112,29 @@ export default function Hero() {
     { dependencies: [active], scope: sectionRef }
   );
 
+  // The later slides' videos would otherwise download alongside the first
+  // one and starve the page's images of bandwidth. Hold them back until
+  // the initial load settles — the first slide runs for SLIDE_DURATION,
+  // which is ample time for them to buffer before the crossfade.
+  useEffect(() => {
+    const preloadRest = () => {
+      sectionRef.current
+        ?.querySelectorAll<HTMLVideoElement>("[data-slide-video]")
+        .forEach((video, i) => {
+          if (i === 0) return;
+          video.preload = "auto";
+          video.load();
+        });
+    };
+
+    if (document.readyState === "complete") {
+      preloadRest();
+      return;
+    }
+    window.addEventListener("load", preloadRest, { once: true });
+    return () => window.removeEventListener("load", preloadRest);
+  }, []);
+
   // One-time entrance for the CTA button
   useGSAP(
     () => {
@@ -143,7 +166,7 @@ export default function Hero() {
           muted
           loop
           playsInline
-          preload="auto"
+          preload={i === 0 ? "auto" : "none"}
           aria-hidden
         />
       ))}

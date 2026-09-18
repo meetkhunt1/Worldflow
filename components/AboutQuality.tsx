@@ -89,7 +89,7 @@ export default function AboutQuality() {
           {/* Facility image */}
           <div data-quality-media className="overflow-hidden rounded-2xl">
             <img
-              src="/factory/mixing-plant.jpg"
+              src="/factory/mixing-plant.webp"
               alt="Raw material mixing and blending plant at the WorldFlow facility"
               loading="lazy"
               className="aspect-[4/3.4] w-full object-cover md:aspect-[4/4.2]"

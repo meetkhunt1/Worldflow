@@ -69,7 +69,7 @@ export default function InfrastructureHero() {
       {/* Oversized so the parallax drift never reveals an edge */}
       <div data-hero-bg className="absolute -inset-y-[10%] inset-x-0" aria-hidden>
         <img
-          src="/factory/plant-exterior.jpg"
+          src="/factory/plant-exterior.webp"
           alt=""
           className="h-full w-full object-cover"
         />

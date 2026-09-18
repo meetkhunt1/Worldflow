@@ -54,7 +54,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
     seoDescription:
       "WorldFlow is a trusted CPVC plumbing pipes & fittings manufacturer in India, offering durable, leak-proof, and corrosion-resistant piping solutions for residential, commercial, and industrial applications.",
     title: "CPVC Plumbing Pipes",
-    image: "/products/cpvc-pipes-fittings.jpg",
+    image: "/products/cpvc-pipes-fittings.webp",
     brochure: "/brochures/cpvc-plumbing-pipes.pdf",
     intro: [
       "WorldFlow CPVC Pipes and Fittings are designed to provide efficient, reliable, and long-lasting solutions for hot and cold water applications. Manufactured using advanced Chlorinated Polyvinyl Chloride (CPVC) material, these products are known for their high thermal resistance, durability, and ability to withstand extreme temperatures and pressures. With compliance to Indian and international standards, our CPVC systems are ideal for both residential and commercial plumbing.",
@@ -164,7 +164,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
     seoDescription:
       "Buy premium UPVC plumbing pipes & fittings from WorldFlow, a trusted manufacturer in India. Durable and leak-proof solutions for Residential, Commercial & Industrial plumbing.",
     title: "UPVC Plumbing Pipes & Fittings",
-    image: "/products/upvc-pipes-fittings.jpg",
+    image: "/products/upvc-pipes-fittings.webp",
     brochure: "/brochures/upvc-plumbing-pipes.pdf",
     intro: [
       "WorldFlow UPVC Pipes and Fittings deliver dependable cold-water plumbing for homes, buildings, and agriculture. Manufactured from unplasticised PVC with high impact strength, they are lead-free, corrosion-proof, and built to carry pressure reliably year after year. Full compliance with Indian standards makes them a safe choice for potable water supply.",
@@ -269,7 +269,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
     seoDescription:
       "WorldFlow manufactures premium SWR drainage pipes & fittings in India, offering leak-proof, corrosion-resistant and durable solutions for efficient soil, waste & rainwater drainage systems.",
     title: "SWR Drainage System",
-    image: "/products/swr-fittings-2.jpg",
+    image: "/products/swr-fittings-2.webp",
     brochure: "/brochures/swr-drainage-system.pdf",
     intro: [
       "WorldFlow SWR (Soil, Waste & Rainwater) pipes and fittings form a complete above-ground drainage system for modern buildings. Manufactured to IS 13592, they carry soil, waste, and rainwater quietly and reliably — with high impact strength, UV stabilisation for exposed stacks, and chemical resistance for everyday household effluents.",
@@ -374,7 +374,7 @@ export const PRODUCT_PAGES: ProductPage[] = [
     seoDescription:
       "WorldFlow manufactures high-quality UPVC column pipes for borewells in India. Strong, corrosion-resistant and durable pipes designed for reliable water lifting and long-lasting performance.",
     title: "Column Pipes",
-    image: "/products/column-pipes.png",
+    image: "/products/column-pipes.webp",
     // No catalogue yet — the hero button shows "Coming soon".
     intro: [
       "WorldFlow Column Pipes are engineered to suspend submersible pumps deep inside borewells and carry water to the surface under continuous pressure. Precision square threads, high tensile load capacity, and rubber sealing rings make every joint strong, leak-proof, and quick to install or retrieve.",

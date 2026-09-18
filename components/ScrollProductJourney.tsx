@@ -33,27 +33,27 @@ type LineupItem = {
 // The CPVC range shares one piece of product artwork (mitred-top pipe with
 // the anti-microbial print). All three CPVC positions reuse it at different
 // heights, so the ratio is declared once and stays in sync with the file.
-const CPVC_ARTWORK = "/line/cpvc.png";
+const CPVC_ARTWORK = "/line/cpvc.webp";
 const CPVC_RATIO = 0.178; // 146 x 819 px trimmed cutout
 
 // Left -> right, grouped like the reference: white bottles, white pipes,
 // tan pipes, grey socket pipes. Heights follow each product's real
 // proportions; the tall white pipe (index 5) is the landing slot.
 const LINEUP: LineupItem[] = [
-  { src: "/line/01.png", name: "Column Pipe", ratio: 0.252, mult: 0.42, sm: false },
-  { src: "/line/02.png", name: "Column Pipe", ratio: 0.251, mult: 0.48, sm: false },
-  { src: "/line/03.png", name: "Column Pipe", ratio: 0.247, mult: 0.75 },
-  { src: "/line/04.png", name: "Column Pipe", ratio: 0.253, mult: 0.62, sm: false },
+  { src: "/line/01.webp", name: "Column Pipe", ratio: 0.252, mult: 0.42, sm: false },
+  { src: "/line/02.webp", name: "Column Pipe", ratio: 0.251, mult: 0.48, sm: false },
+  { src: "/line/03.webp", name: "Column Pipe", ratio: 0.247, mult: 0.75 },
+  { src: "/line/04.webp", name: "Column Pipe", ratio: 0.253, mult: 0.62, sm: false },
   { src: CPVC_ARTWORK, name: "CPVC Plumbing Pipe", ratio: CPVC_RATIO, mult: 0.68 },
   { src: CPVC_ARTWORK, name: "CPVC Plumbing Pipe", ratio: CPVC_RATIO, mult: 0.95, slot: true }, // tan CPVC pipe — traveller
   { src: CPVC_ARTWORK, name: "CPVC Plumbing Pipe", ratio: CPVC_RATIO, mult: 0.53, sm: false },
-  { src: "/line/05.png", name: "UPVC Plumbing Pipe", ratio: 0.324, mult: 0.62 },
-  { src: "/line/06.png", name: "UPVC Plumbing Pipe", ratio: 0.273, mult: 1.0 }, // tall white pipe
-  { src: "/line/07.png", name: "UPVC Plumbing Pipe", ratio: 0.467, mult: 0.49, sm: false },
-  { src: "/line/11.png", name: "SWR Drainage Pipe", ratio: 0.33, mult: 0.73, sm: false },
-  { src: "/line/12.png", name: "SWR Drainage Pipe", ratio: 0.267, mult: 0.75 },
-  { src: "/line/13.png", name: "SWR Drainage Pipe", ratio: 0.256, mult: 0.61, sm: false },
-  { src: "/line/14.png", name: "SWR Drainage Pipe", ratio: 0.429, mult: 0.63 },
+  { src: "/line/05.webp", name: "UPVC Plumbing Pipe", ratio: 0.324, mult: 0.62 },
+  { src: "/line/06.webp", name: "UPVC Plumbing Pipe", ratio: 0.273, mult: 1.0 }, // tall white pipe
+  { src: "/line/07.webp", name: "UPVC Plumbing Pipe", ratio: 0.467, mult: 0.49, sm: false },
+  { src: "/line/11.webp", name: "SWR Drainage Pipe", ratio: 0.33, mult: 0.73, sm: false },
+  { src: "/line/12.webp", name: "SWR Drainage Pipe", ratio: 0.267, mult: 0.75 },
+  { src: "/line/13.webp", name: "SWR Drainage Pipe", ratio: 0.256, mult: 0.61, sm: false },
+  { src: "/line/14.webp", name: "SWR Drainage Pipe", ratio: 0.429, mult: 0.63 },
 ];
 
 // The traveller reuses the slot artwork so the landed pipe is identical

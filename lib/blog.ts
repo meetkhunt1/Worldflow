@@ -30,7 +30,7 @@ export const BLOG_POSTS: BlogPost[] = [
     readTime: "6 min read",
     excerpt:
       "Both look similar on the shelf, but they solve different problems. Here's how to pick the right system for your water lines the first time.",
-    image: "/apps/01.png",
+    image: "/apps/01.webp",
     sections: [
       {
         heading: "The one-line difference",
@@ -107,7 +107,7 @@ export const BLOG_POSTS: BlogPost[] = [
     readTime: "5 min read",
     excerpt:
       "Your column pipe carries the pump, the water, and the whole cost of a mistake. Four factors decide the right pipe — here they are in plain language.",
-    image: "/apps/03.png",
+    image: "/apps/03.webp",
     sections: [
       {
         heading: "What a column pipe actually does",
@@ -183,7 +183,7 @@ export const BLOG_POSTS: BlogPost[] = [
     readTime: "4 min read",
     excerpt:
       "GI pipes don't fail overnight — they warn you for years first. Here are the seven signals your pipeline is asking for retirement.",
-    image: "/apps/02.png",
+    image: "/apps/02.webp",
     sections: [
       {
         heading: "Why GI pipes age the way they do",
@@ -249,7 +249,7 @@ export const BLOG_POSTS: BlogPost[] = [
     readTime: "5 min read",
     excerpt:
       "Good drainage is invisible: no smells, no gurgles, no stains on the elevation. Here's how the quiet buildings do it.",
-    image: "/apps/04.png",
+    image: "/apps/04.webp",
     sections: [
       {
         heading: "What SWR actually covers",

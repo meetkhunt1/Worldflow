@@ -24,14 +24,14 @@ type ProductCard = {
 };
 
 const PRODUCTS: ProductCard[] = [
-  { name: "UPVC Pipes", use: "Plumbing & water supply", image: "/11%201.png" },
-  { name: "CPVC Pipes", use: "Hot & cold water systems", image: "/9%201.png" },
-  { name: "SWR Pipes", use: "Soil, waste & rainwater", image: "/4%202.png" },
-  { name: "HDPE Pipes", use: "High-pressure transport", image: "/7%201.png" },
-  { name: "Column Pipes", use: "Borewell & submersible", image: "/2%201.png" },
-  { name: "Casing Pipes", use: "Borewell protection", image: "/line/01.png" },
-  { name: "Agriculture Pipes", use: "Irrigation networks", image: "/5%201.png" },
-  { name: "Garden Pipes", use: "Landscape & utility", image: "/12%201.png" },
+  { name: "UPVC Pipes", use: "Plumbing & water supply", image: "/11-1.webp" },
+  { name: "CPVC Pipes", use: "Hot & cold water systems", image: "/9-1.webp" },
+  { name: "SWR Pipes", use: "Soil, waste & rainwater", image: "/4-2.webp" },
+  { name: "HDPE Pipes", use: "High-pressure transport", image: "/7-1.webp" },
+  { name: "Column Pipes", use: "Borewell & submersible", image: "/2-1.webp" },
+  { name: "Casing Pipes", use: "Borewell protection", image: "/line/01.webp" },
+  { name: "Agriculture Pipes", use: "Irrigation networks", image: "/5-1.webp" },
+  { name: "Garden Pipes", use: "Landscape & utility", image: "/12-1.webp" },
 ];
 
 export default function AboutProducts() {

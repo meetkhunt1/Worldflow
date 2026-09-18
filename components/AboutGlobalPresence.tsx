@@ -11,7 +11,7 @@ gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 /* ------------------------------------------------------------------ *
  * AboutGlobalPresence — closing "Global Presence" section.
- * Dotted world map (/public/world-dots.png, transparent background)
+ * Dotted world map (/public/world-dots.webp, transparent background)
  * with a giant knockout WORLDFLOW wordmark over it, flanked by
  * count-up stats, and the product range as pill badges overlapping
  * the map.
@@ -150,7 +150,7 @@ export default function AboutGlobalPresence() {
           {/* Dotted world map with knockout wordmark */}
           <div data-gp-map className="relative mx-auto max-w-4xl">
             <img
-              src="/world-dots.png"
+              src="/world-dots.webp"
               alt="WorldFlow distribution reach across the world"
               loading="lazy"
               className="w-full"
