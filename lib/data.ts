@@ -126,6 +126,8 @@ export const footerContact = {
     { label: "Domestic", number: "+91 97276 75942" },
     { label: "International", number: "+91 84014 03884" },
   ],
+  // WhatsApp business line — digits are stripped at the call site.
+  whatsapp: "+91 97276 75942",
   email: "worldflow8848@gmail.com",
   address: "Khodal Ind. Area, 8–B NH Veraval (Shapar), Rajkot Gujarat – 360024, India",
   mapLink: "https://maps.app.goo.gl/5RzMuwq3sJXC55eR7",

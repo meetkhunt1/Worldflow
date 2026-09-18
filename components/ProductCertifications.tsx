@@ -26,22 +26,22 @@ const CERTIFICATIONS: CertCard[] = [
   {
     title: "CE Certificate of Conformity",
     blurb: "EC conformity for pipes & fittings, certified by ICI UK.",
-    image: "/certificates/ce-logo.png",
+    image: "/certificates/ce-logo.webp",
   },
   {
     title: "ISO 9001 Certified",
     blurb: "Registered quality management system across production.",
-    image: "/certificates/iso-logo.png",
+    image: "/certificates/iso-logo.webp",
   },
   {
     title: "ISI Marked",
     blurb: "Manufactured to the applicable Indian Standards.",
-    image: "/certificates/isi-logo.png",
+    image: "/certificates/isi-logo.webp",
   },
   {
     title: "GST Registered",
     blurb: "Registered under the Goods & Services Tax regime.",
-    image: "/certificates/gst-logo.png",
+    image: "/certificates/gst-logo.webp",
   },
   {
     title: "Registered Trademark",
@@ -51,7 +51,7 @@ const CERTIFICATIONS: CertCard[] = [
   {
     title: "MSME ZED Certified",
     blurb: "Zero Defect, Zero Effect — MSME sustainable certification.",
-    image: "/certificates/zed-logo.png",
+    image: "/certificates/zed-logo.webp",
   },
 ];
 

@@ -169,7 +169,7 @@ export default function AboutTrust() {
             className="relative min-h-[300px] overflow-hidden rounded-2xl sm:min-h-[360px] lg:col-span-5 lg:min-h-0"
           >
             <img
-              src="/factory/extrusion-line.jpg"
+              src="/factory/extrusion-line.webp"
               alt="WorldFlow pipe extrusion line in production"
               loading="lazy"
               className="absolute inset-0 h-full w-full object-cover"

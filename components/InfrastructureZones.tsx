@@ -54,7 +54,7 @@ const ZONES: Zone[] = [
       "Resin, stabilisers and additives stocked on site",
       "Blended compound fed directly to the lines",
     ],
-    images: ["/factory/mixing-plant.jpg"],
+    images: ["/factory/mixing-plant.webp"],
   },
   {
     number: "02.",
@@ -72,9 +72,9 @@ const ZONES: Zone[] = [
       "Pipe and fittings produced under one roof",
     ],
     images: [
-      "/factory/extrusion-line.jpg",
-      "/factory/injection-moulding.jpg",
-      "/factory/mould-store.jpg",
+      "/factory/extrusion-line.webp",
+      "/factory/injection-moulding.webp",
+      "/factory/mould-store.webp",
     ],
   },
   {
@@ -92,7 +92,7 @@ const ZONES: Zone[] = [
       "Water baths for reversion and heat cycling",
       "Samples signed off before a batch is released",
     ],
-    images: ["/factory/testing-lab.jpg", "/factory/testing-equipment.jpg"],
+    images: ["/factory/testing-lab.webp", "/factory/testing-equipment.webp"],
   },
   {
     number: "04.",
@@ -109,7 +109,7 @@ const ZONES: Zone[] = [
       "Depth held on the shelf for same-day picking",
     ],
     // Racked cartons carry the zone; the bagged compound store overlaps it.
-    images: ["/factory/warehouse.jpg", "/factory/warehouse-bagged-stock.jpg"],
+    images: ["/factory/warehouse.webp", "/factory/warehouse-bagged-stock.webp"],
     layout: "overlap",
   },
   {
@@ -126,7 +126,7 @@ const ZONES: Zone[] = [
       "Staged by order before loading",
       "Loaded direct from the plant floor",
     ],
-    images: ["/factory/packaging.jpg"],
+    images: ["/factory/packaging.webp"],
   },
   {
     number: "06.",
@@ -145,9 +145,9 @@ const ZONES: Zone[] = [
     images: [
       // The wide office view carries the zone; the sales desk and the
       // angled signage shot sit under it as the working detail.
-      "/factory/office-reception.jpg",
-      "/factory/office-sales-desk.jpg",
-      "/factory/reception-signage-angle.jpg",
+      "/factory/office-reception.webp",
+      "/factory/office-sales-desk.webp",
+      "/factory/reception-signage-angle.webp",
     ],
   },
 ];

@@ -129,7 +129,7 @@ export default function ImpactStats() {
       >
         {/* Faint dotted world map behind the pinned content */}
         <img
-          src="/world-dots.png"
+          src="/world-dots.webp"
           alt=""
           aria-hidden
           loading="lazy"

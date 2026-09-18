@@ -95,7 +95,7 @@ export default function AboutShowcase() {
             {/* 02 — factory image with overlay line */}
             <article className={`${cardBase} bg-knavy`}>
               <img
-                src="/factory/injection-moulding.jpg"
+                src="/factory/injection-moulding.webp"
                 alt="CPVC injection moulding machine at the WorldFlow manufacturing facility"
                 loading="lazy"
                 className="absolute inset-0 h-full w-full object-cover"
@@ -126,7 +126,7 @@ export default function AboutShowcase() {
                 the statement. */}
             <article className={`${cardBase} bg-knavy`}>
               <img
-                src="/factory/reception-signage.jpg"
+                src="/factory/reception-signage.webp"
                 alt="The golden WorldFlow mark on the office signage wall"
                 loading="lazy"
                 className="absolute inset-0 h-full w-full object-cover object-center"

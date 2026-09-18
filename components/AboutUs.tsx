@@ -17,15 +17,15 @@ const BLUEPRINT_BG =
  * clusters on the infrastructure page. First entry spans both columns. */
 const MEDIA = [
   {
-    src: "/factory/injection-moulding.jpg",
+    src: "/factory/injection-moulding.webp",
     alt: "CPVC injection moulding machine at the WorldFlow manufacturing facility",
   },
   {
-    src: "/factory/mixing-plant.jpg",
+    src: "/factory/mixing-plant.webp",
     alt: "Automated raw-material mixing plant feeding the WorldFlow extrusion lines",
   },
   {
-    src: "/factory/testing-lab.jpg",
+    src: "/factory/testing-lab.webp",
     alt: "In-house testing laboratory at the WorldFlow facility",
   },
 ];

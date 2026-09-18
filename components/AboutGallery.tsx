@@ -27,16 +27,16 @@ type GalleryTile = {
 // Real facility photography (/public/factory). Heights alternate tall →
 // short → mid so each masonry column reads with a different rhythm.
 const TILES: GalleryTile[] = [
-  { title: "Pipe Extrusion Line", image: "/factory/extrusion-line.jpg", imagePosition: "object-center", height: "h-[420px]" },
-  { title: "Injection Moulding", image: "/factory/injection-moulding.jpg", imagePosition: "object-center", height: "h-[300px]" },
-  { title: "Moulding Hall", image: "/factory/moulding-hall.jpg", imagePosition: "object-center", height: "h-[340px]" },
-  { title: "Raw Material Mixing", image: "/factory/mixing-plant.jpg", imagePosition: "object-center", height: "h-[380px]" },
-  { title: "Mould Library", image: "/factory/mould-store.jpg", imagePosition: "object-center", height: "h-[300px]" },
-  { title: "Finished Goods Store", image: "/factory/warehouse.jpg", imagePosition: "object-center", height: "h-[360px]" },
-  { title: "Packing & Dispatch", image: "/factory/packaging.jpg", imagePosition: "object-center", height: "h-[320px]" },
+  { title: "Pipe Extrusion Line", image: "/factory/extrusion-line.webp", imagePosition: "object-center", height: "h-[420px]" },
+  { title: "Injection Moulding", image: "/factory/injection-moulding.webp", imagePosition: "object-center", height: "h-[300px]" },
+  { title: "Moulding Hall", image: "/factory/moulding-hall.webp", imagePosition: "object-center", height: "h-[340px]" },
+  { title: "Raw Material Mixing", image: "/factory/mixing-plant.webp", imagePosition: "object-center", height: "h-[380px]" },
+  { title: "Mould Library", image: "/factory/mould-store.webp", imagePosition: "object-center", height: "h-[300px]" },
+  { title: "Finished Goods Store", image: "/factory/warehouse.webp", imagePosition: "object-center", height: "h-[360px]" },
+  { title: "Packing & Dispatch", image: "/factory/packaging.webp", imagePosition: "object-center", height: "h-[320px]" },
   // The tight signage crop is the closing card in AboutShowcase on this same
   // page, so the gallery shows the wider reception view instead of repeating it.
-  { title: "Corporate Office", image: "/factory/reception-desk.jpg", imagePosition: "object-center", height: "h-[400px]" },
+  { title: "Corporate Office", image: "/factory/reception-desk.webp", imagePosition: "object-center", height: "h-[400px]" },
 ];
 
 export default function AboutGallery() {
