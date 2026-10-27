@@ -6,6 +6,7 @@ import {
   footerContact,
   footerBottom,
 } from "@/lib/data";
+import { LANDING_PAGES } from "@/lib/landing-pages";
 
 /** Uppercase column heading. */
 function FooterHeading({ children }: { children: React.ReactNode }) {
@@ -28,6 +29,52 @@ function FooterLinkList({ links }: { links: { label: string; href: string }[] })
         </li>
       ))}
     </ul>
+  );
+}
+
+/**
+ * Scrolling strip of the standalone SEO landing pages (see
+ * lib/landing-pages.ts) — they have no nav link anywhere else, so this
+ * marquee is how a visitor (and a crawler) can reach them from the
+ * footer. Continuous CSS-animated scroll; hovering/focusing the strip
+ * pauses it, moving away resumes it — the modern, accessible
+ * replacement for the old <marquee> tag (which is deprecated and
+ * un-styleable, and traps keyboard focus on a moving target).
+ *
+ * The track is rendered twice back-to-back and slides exactly -50% of
+ * its own width, so the loop is seamless; the second copy is
+ * aria-hidden and unfocusable since it's a pure visual duplicate.
+ */
+function FooterSeoLinks() {
+  const links = LANDING_PAGES.map((p) => ({ label: p.title, href: `/${p.slug}` }));
+
+  const Track = ({ duplicate }: { duplicate?: boolean }) => (
+    <div className="flex shrink-0 items-center" aria-hidden={duplicate || undefined}>
+      {links.map((link, i) => (
+        <span key={i} className="flex items-center">
+          <a
+            href={link.href}
+            tabIndex={duplicate ? -1 : undefined}
+            className="whitespace-nowrap px-4 text-[13px] font-medium text-white/70 transition-colors duration-300 ease-sc hover:text-white md:px-5 md:text-[14px]"
+          >
+            {link.label}
+          </a>
+          {/* Separator between links */}
+          <span className="text-white/35" aria-hidden>
+            •
+          </span>
+        </span>
+      ))}
+    </div>
+  );
+
+  return (
+    <nav aria-label="More pages" className="footer-marquee border-t border-white/20 py-4">
+      <div className="footer-marquee-track flex w-max">
+        <Track />
+        <Track duplicate />
+      </div>
+    </nav>
   );
 }
 
@@ -206,6 +253,9 @@ export default function Footer() {
             </div>
           </div>
         </div>
+
+        {/* SEO landing pages — scrolling strip, above the copyright bar */}
+        <FooterSeoLinks />
 
         {/* Bottom bar */}
         <div className="flex flex-col gap-3 border-t border-white/25 py-7 text-[15px] text-white/80 md:flex-row md:items-center md:justify-between">

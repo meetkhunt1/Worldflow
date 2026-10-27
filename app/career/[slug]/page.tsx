@@ -7,20 +7,26 @@ export function generateStaticParams() {
   return JOBS.map((job) => ({ slug: job.slug }));
 }
 
-export function generateMetadata({
+export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
-}): Metadata {
-  const job = getJob(params.slug);
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const job = getJob(slug);
   return {
     title: job ? `${job.title} | Career | WorldFlow` : "Career | WorldFlow",
     description: job?.summary,
   };
 }
 
-export default function JobPage({ params }: { params: { slug: string } }) {
-  const job = getJob(params.slug);
+export default async function JobPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const job = getJob(slug);
   if (!job) notFound();
   return <JobApplication job={job} />;
 }

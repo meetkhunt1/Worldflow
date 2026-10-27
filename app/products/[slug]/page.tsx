@@ -7,20 +7,26 @@ export function generateStaticParams() {
   return PRODUCT_PAGES.map((p) => ({ slug: p.slug }));
 }
 
-export function generateMetadata({
+export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
-}): Metadata {
-  const product = getProductPage(params.slug);
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const product = getProductPage(slug);
   return {
     title: product ? `${product.title} | WorldFlow` : "Products | WorldFlow",
     description: product?.intro[0],
   };
 }
 
-export default function ProductPage({ params }: { params: { slug: string } }) {
-  const product = getProductPage(params.slug);
+export default async function ProductPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const product = getProductPage(slug);
   if (!product) notFound();
   return <ProductDetail product={product} />;
 }

@@ -160,3 +160,35 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* Footer SEO-links marquee — continuous scroll, pauses on hover/focus.
+   The track renders its content twice (see FooterSeoLinks) and slides
+   exactly half its own width, so the loop has no visible seam. */
+.footer-marquee {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+.footer-marquee-track {
+  animation: footer-marquee-scroll 38s linear infinite;
+}
+.footer-marquee:hover .footer-marquee-track,
+.footer-marquee:focus-within .footer-marquee-track {
+  animation-play-state: paused;
+}
+@keyframes footer-marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .footer-marquee-track {
+    animation: none;
+  }
+  .footer-marquee {
+    overflow-x: auto;
+  }
+}

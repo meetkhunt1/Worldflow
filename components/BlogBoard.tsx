@@ -3,13 +3,15 @@
 import Reveal from "@/components/Reveal";
 import SplitReveal from "@/components/SplitReveal";
 import BlogCard from "@/components/BlogCard";
-import { BLOG_POSTS } from "@/lib/blog";
+import type { BlogSummary } from "@/lib/blog-types";
 
 /* ------------------------------------------------------------------ *
  * BlogBoard — /blog listing: header + card grid.
+ * Posts are passed in by app/blog/page.tsx (from the app/blog/posts.ts
+ * registry).
  * ------------------------------------------------------------------ */
 
-export default function BlogBoard() {
+export default function BlogBoard({ posts }: { posts: BlogSummary[] }) {
   return (
     <section className="bg-soft pb-24 pt-32 md:pb-32 md:pt-44">
       <div className="shell">
@@ -32,7 +34,7 @@ export default function BlogBoard() {
         </div>
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 md:mt-16 lg:grid-cols-3">
-          {BLOG_POSTS.map((post, i) => (
+          {posts.map((post, i) => (
             <Reveal key={post.slug} delay={(i % 3) * 0.08} className="h-full">
               <BlogCard post={post} />
             </Reveal>
