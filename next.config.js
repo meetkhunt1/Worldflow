@@ -20,6 +20,9 @@ const distDir = process.env.NODE_ENV === "development" ? ".next-dev" : ".next";
 const nextConfig = {
   distDir,
   reactStrictMode: true,
+  // Pin the workspace root so a stray lockfile higher up the tree
+  // (e.g. C:\Users\<name>\package-lock.json) isn't picked up instead.
+  turbopack: { root: __dirname },
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "www.spoiledchild.com" },

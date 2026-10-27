@@ -8,6 +8,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ButtonFx from "@/components/ButtonFx";
 import StickyContact from "@/components/StickyContact";
+import { SITE_URL } from "@/lib/site";
 
 // Body font: Figtree.  Headline font: Almarai (trial — was Roboto Condensed).
 const figtree = Figtree({
@@ -23,6 +24,8 @@ const almarai = Almarai({
 });
 
 export const metadata: Metadata = {
+  // Resolves every relative canonical / Open Graph URL to an absolute one.
+  metadataBase: new URL(SITE_URL),
   title: "Leading Pipes & Fittings Manufacturers, India | WorldFlow",
   description:
     "WorldFlow is India's leading pipes & fittings manufacturer, offering premium CPVC, UPVC, SWR drainage and borewell column pipes for residential, commercial and industrial applications.",

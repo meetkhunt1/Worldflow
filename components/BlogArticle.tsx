@@ -1,20 +1,27 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import Reveal from "@/components/Reveal";
 import BlogCard from "@/components/BlogCard";
-import { BLOG_POSTS, type BlogPost } from "@/lib/blog";
+import {
+  formatBlogDate,
+  type BlogFaq,
+  type BlogPost,
+  type BlogSummary,
+} from "@/lib/blog-types";
 
 /* ------------------------------------------------------------------ *
- * BlogArticle — /blog/[slug] template.
+ * BlogArticle — shared template for every /blog/<slug> page.
+ * Each post's own page.tsx supplies the data; this only renders it.
  * Chip + title + meta, hero image, table of contents, numbered
  * sections, FAQ accordion, share row, and related posts.
  * ------------------------------------------------------------------ */
 
 const easeSc = [0.25, 0.1, 0.25, 1] as const;
 
-function Faq({ faqs }: { faqs: BlogPost["faqs"] }) {
+function Faq({ faqs }: { faqs: BlogFaq[] }) {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
@@ -95,12 +102,24 @@ function ShareRow({ post }: { post: BlogPost }) {
   );
 }
 
-export default function BlogArticle({ post }: { post: BlogPost }) {
-  const related = BLOG_POSTS.filter((p) => p.slug !== post.slug).slice(0, 3);
+export default function BlogArticle({
+  post,
+  related,
+}: {
+  post: BlogPost;
+  related: BlogSummary[];
+}) {
+  // Running number per section; null for sections marked `numbered: false`
+  // (those are skipped, so the visible numbering stays 1, 2, 3...).
+  let counter = 0;
+  const numbers = post.sections.map((s) =>
+    s.numbered === false ? null : ++counter
+  );
 
   return (
     <section className="bg-paper pb-24 pt-32 md:pb-32 md:pt-44">
       <div className="shell">
+        <article>
         {/* Article header */}
         <div className="mx-auto max-w-3xl">
           <Reveal>
@@ -115,23 +134,37 @@ export default function BlogArticle({ post }: { post: BlogPost }) {
           </Reveal>
           <Reveal delay={0.14}>
             <p className="mt-4 flex items-center gap-2.5 font-book text-[14.5px] text-muted">
-              {post.date}
+              <time dateTime={post.date}>{formatBlogDate(post.date)}</time>
               <span className="h-1 w-1 rounded-full bg-korange" aria-hidden />
               {post.readTime}
             </p>
           </Reveal>
         </div>
 
-        {/* Hero image */}
-        <Reveal delay={0.15} className="mx-auto mt-10 max-w-4xl">
-          <img
-            src={post.image}
-            alt={post.title}
-            className="aspect-[16/8] w-full rounded-xl object-cover"
-          />
-        </Reveal>
+        {/* Hero image — optional. Above the fold, so it loads eagerly at high priority */}
+        {post.image && (
+          <Reveal delay={0.15} className="mx-auto mt-10 max-w-4xl">
+            <img
+              src={post.image}
+              alt={post.imageAlt ?? post.title}
+              fetchPriority="high"
+              decoding="async"
+              className="aspect-[16/8] w-full rounded-xl object-cover"
+            />
+          </Reveal>
+        )}
 
         <div className="mx-auto max-w-3xl">
+          {/* Intro — opening text for posts that don't start with a heading */}
+          {post.intro?.map((paragraph) => (
+            <p
+              key={paragraph.slice(0, 40)}
+              className="mt-10 font-book text-[16px] leading-[1.8] text-muted first-of-type:mt-12"
+            >
+              {paragraph}
+            </p>
+          ))}
+
           {/* Table of contents */}
           <Reveal delay={0.1}>
             <nav
@@ -144,12 +177,13 @@ export default function BlogArticle({ post }: { post: BlogPost }) {
               <ol className="mt-4 space-y-2.5">
                 {post.sections.map((section, i) => (
                   <li key={section.heading}>
-                    <a
+                    <Link
                       href={`#section-${i + 1}`}
                       className="font-book text-[15px] text-muted transition-colors duration-300 hover:text-korange"
                     >
-                      {i + 1}. {section.heading}
-                    </a>
+                      {numbers[i] !== null && `${numbers[i]}. `}
+                      {section.heading}
+                    </Link>
                   </li>
                 ))}
               </ol>
@@ -160,9 +194,10 @@ export default function BlogArticle({ post }: { post: BlogPost }) {
           {post.sections.map((section, i) => (
             <div key={section.heading} id={`section-${i + 1}`} className="mt-12 scroll-mt-32">
               <h2 className="font-book text-[clamp(1.3rem,2.2vw,1.6rem)] font-bold tracking-tight text-knavy">
-                {i + 1}. {section.heading}
+                {numbers[i] !== null && `${numbers[i]}. `}
+                {section.heading}
               </h2>
-              {section.paragraphs.map((paragraph) => (
+              {section.paragraphs?.map((paragraph) => (
                 <p
                   key={paragraph.slice(0, 40)}
                   className="mt-4 font-book text-[16px] leading-[1.8] text-muted"
@@ -185,21 +220,24 @@ export default function BlogArticle({ post }: { post: BlogPost }) {
             </div>
           ))}
 
-          {/* FAQ */}
-          <div className="mt-16">
-            <h2 className="font-book text-[clamp(1.3rem,2.2vw,1.6rem)] font-bold tracking-tight text-knavy">
-              FAQs
-            </h2>
-            <div className="mt-6">
-              <Faq faqs={post.faqs} />
+          {/* FAQ — only for posts that have one */}
+          {post.faqs && post.faqs.length > 0 && (
+            <div className="mt-16">
+              <h2 className="font-book text-[clamp(1.3rem,2.2vw,1.6rem)] font-bold tracking-tight text-knavy">
+                FAQs
+              </h2>
+              <div className="mt-6">
+                <Faq faqs={post.faqs} />
+              </div>
             </div>
-          </div>
+          )}
 
           {/* Share */}
           <div className="mt-12">
             <ShareRow post={post} />
           </div>
         </div>
+        </article>
 
         {/* Related posts */}
         <div className="mx-auto mt-20 max-w-6xl border-t border-knavy/10 pt-14 md:mt-24">
@@ -207,12 +245,12 @@ export default function BlogArticle({ post }: { post: BlogPost }) {
             <h2 className="font-display text-[clamp(1.5rem,2.8vw,2.1rem)] font-bold uppercase tracking-tight text-knavy">
               Relevant blogs
             </h2>
-            <a
+            <Link
               href="/blog"
               className="whitespace-nowrap font-book text-[14px] font-semibold text-korange transition-colors hover:text-korangeDark"
             >
               View all →
-            </a>
+            </Link>
           </div>
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {related.map((p) => (

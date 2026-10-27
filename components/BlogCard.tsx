@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import type { MouseEvent } from "react";
-import type { BlogPost } from "@/lib/blog";
+import { formatBlogDate, type BlogSummary } from "@/lib/blog-types";
 
 /* ------------------------------------------------------------------ *
  * BlogCard — shared card for the /blog grid and "related posts".
@@ -10,7 +10,7 @@ import type { BlogPost } from "@/lib/blog";
  * share button (native share sheet, clipboard fallback).
  * ------------------------------------------------------------------ */
 
-export default function BlogCard({ post }: { post: BlogPost }) {
+export default function BlogCard({ post }: { post: BlogSummary }) {
   const share = async (e: MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
@@ -28,12 +28,26 @@ export default function BlogCard({ post }: { post: BlogPost }) {
       className="group flex h-full flex-col rounded-xl bg-white p-4 shadow-[0_4px_14px_-12px_rgba(27,36,49,0.3)] transition-shadow duration-300 ease-sc hover:shadow-[0_16px_40px_-20px_rgba(27,36,49,0.35)]"
     >
       <span className="block overflow-hidden rounded-lg">
-        <img
-          src={post.image}
-          alt={post.title}
-          loading="lazy"
-          className="aspect-[16/10] w-full object-cover transition-transform duration-500 ease-sc group-hover:scale-[1.04]"
-        />
+        {post.image ? (
+          <img
+            src={post.image}
+            alt={post.imageAlt ?? post.title}
+            loading="lazy"
+            decoding="async"
+            className="aspect-[16/10] w-full object-cover transition-transform duration-500 ease-sc group-hover:scale-[1.04]"
+          />
+        ) : (
+          // No cover image: branded placeholder keeps the card grid even.
+          <span
+            aria-hidden
+            className="grid aspect-[16/10] w-full place-items-center bg-knavy font-display text-[clamp(1.6rem,2.4vw,2.1rem)] font-extrabold tracking-[-0.02em]"
+          >
+            <span>
+              <span className="text-korange">World</span>
+              <span className="text-white">flow</span>
+            </span>
+          </span>
+        )}
       </span>
 
       <span className="flex flex-1 flex-col px-2 pb-2 pt-5">
@@ -60,7 +74,7 @@ export default function BlogCard({ post }: { post: BlogPost }) {
         </span>
 
         <span className="mt-auto flex items-center gap-2.5 pt-4 font-book text-[14px] text-muted">
-          {post.date}
+          <time dateTime={post.date}>{formatBlogDate(post.date)}</time>
           <span className="h-1 w-1 rounded-full bg-korange" aria-hidden />
           {post.readTime}
         </span>
